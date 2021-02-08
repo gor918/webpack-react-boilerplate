@@ -1,0 +1,39 @@
+{
+    "compilerOptions": {
+        "lib": [
+          "es6",
+          "dom",
+          "es2020",
+          "dom.iterable",
+          "webworker"
+        ],
+        "module": "esnext",
+        "removeComments": true,
+        "preserveConstEnums": true,
+        "noImplicitThis": true,
+        "moduleResolution": "node",
+        "sourceMap": true,
+        "allowSyntheticDefaultImports": true,
+        "jsx": "preserve",
+        "experimentalDecorators": true,
+        "noImplicitReturns": true,
+        "emitDecoratorMetadata": true,
+        "suppressImplicitAnyIndexErrors": true,
+        "noImplicitAny": true,
+        "strictNullChecks": true,
+        "esModuleInterop": true,
+        "incremental": true,
+        "skipLibCheck": true,
+        "strict": true,
+        "target": "es2020",
+        "resolveJsonModule": true,
+        "baseUrl": ".",
+        "paths": {
+            "shared/*": ["src/shared/*"],
+            "containers/*": ["src/containers/*"]
+        },
+        "types": ["react", "node"]
+    },
+    "exclude": ["dist", "node_modules"],
+    "include": ["src/"]
+}

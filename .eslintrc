@@ -1,0 +1,122 @@
+{
+    "root": true,
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "project": "./tsconfig.json"
+    },
+    "plugins": [
+        "@typescript-eslint"
+    ],
+    "extends": [
+        "airbnb-typescript",
+        "airbnb/hooks",
+        "plugin:react/recommended",
+        "plugin:import/typescript",
+        "prettier/@typescript-eslint",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:react-hooks/recommended",
+        "plugin:import/recommended",
+        "prettier",
+        "prettier/react"
+    ],
+    "ignorePatterns": ["webpack.config.js"],
+    "env": {
+        "node": true,
+        "browser": true,
+        "jest": true,
+        "es2020": false
+    },
+    "rules": {
+        "react/display-name": "off",
+        "no-underscore-dangle": "off",
+        "@typescript-eslint/no-var-requires": 0,
+        "no-constant-condition": "error",
+        "no-prototype-builtins": "off",
+        "nonblock-statement-body-position": "error",
+        "no-restricted-imports": [
+            "error",
+            {
+                "patterns": ["@material-ui/*/*/*", "!@material-ui/core/test-utils/*"]
+            }
+        ],
+        "prefer-arrow-callback": [
+            "error",
+            {
+                "allowNamedFunctions": true
+            }
+        ],
+        "@typescript-eslint/dot-notation": "off",
+        "@typescript-eslint/no-implied-eval": "off",
+        "@typescript-eslint/no-throw-literal": "off",
+        "import/named": "off",
+        "prefer-destructuring": "off",
+        "react/destructuring-assignment": "off",
+        "react/forbid-prop-types": "off", // Too strict, no time for that
+        "react/jsx-curly-brace-presence": "off",
+        // Prefer <React.Fragment> over <>.
+        "react/jsx-fragments": ["error", "element"],
+        // We are a UI library.
+        "react/jsx-props-no-spreading": "off",
+        // This rule is great for raising people awareness of what a key is and how it works.
+        "react/no-array-index-key": "off",
+        "react/no-danger": "error",
+        "react/no-direct-mutation-state": "error",
+        // Not always relevant
+        "react/require-default-props": "off",
+        "react/sort-prop-types": "error",
+        // This depends entirely on what you"re doing. There"s no universal pattern
+        "react/state-in-constructor": "off",
+        // stylistic opinion. For conditional assignment we want it outside, otherwise as static
+        "react/static-property-placement": "off",
+        "no-shadow": "off",
+        "import/no-extraneous-dependencies": "off",
+        "arrow-body-style": ["error", "as-needed"],
+        "react/jsx-filename-extension": [
+            "error",
+            {
+                "extensions": [
+                    ",.js",
+                    ",.jsx",
+                    ".tsx"
+                ]
+            }
+        ],
+        "import/prefer-default-export": "off",
+        "jsx-a11y/label-has-associated-control": "off",
+        "no-console": [
+            "warn",
+            {
+                "allow": [
+                    "warn",
+                    "error",
+                    "log"
+                ]
+            }
+        ],
+        "no-param-reassign": [
+            "error",
+            {
+                "props": true,
+                "ignorePropertyModificationsFor": [
+                    "mutableTarget",
+                    "task",
+                    "assignableItem",
+                    "store"
+                ]
+            }
+        ],
+        "no-plusplus": "off",
+        "react/button-has-type": "off",
+        "react/prop-types": "off"
+    },
+    "settings": {
+        "import/resolver": {
+            "node": {
+                "paths": ["./src"]
+            },
+            "react":  {
+                "version":  "detect"  // Indicates eslint-plugin-react automatically detect the React version to use
+            }
+        }
+    }
+}
