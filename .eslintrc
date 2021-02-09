@@ -19,7 +19,7 @@
         "prettier",
         "prettier/react"
     ],
-    "ignorePatterns": ["webpack.config.js"],
+    "ignorePatterns": ["webpack.config.js", "postcss.config.js", "prettier.config.js"],
     "env": {
         "node": true,
         "browser": true,
