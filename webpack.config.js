@@ -33,6 +33,7 @@ module.exports = (env, args = {}) => {
             modules: [here('./node_modules'), here(dirs.src)],
         },
         devtool: !isProduction && 'inline-cheap-module-source-map',
+        stats: 'errors-only',
         module: {
             rules: [
                 {
@@ -42,9 +43,6 @@ module.exports = (env, args = {}) => {
                 {
                     test: /\.tsx?$/,
                     loader: 'ts-loader',
-                    options: {
-                        transpileOnly: true,
-                    },
                     exclude: /node_modules/,
                 },
                 {
