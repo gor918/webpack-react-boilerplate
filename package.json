@@ -1,6 +1,6 @@
 {
     "name": "webpack-react-boilerplate",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Webpack + React + TypeScript + ESLint + Prettier",
     "main": "index.js",
     "scripts": {
