@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import ReactDOM from 'react-dom';
-import './styles.scss';
-import LogoIcon from 'assets/logo.svg';
 
-const App = () => (
-    <div className="logo">
-        <img src={LogoIcon} alt="" />
-    </div>
+import './styles.scss';
+
+const App = (): JSX.Element => (
+    <Fragment>
+        <h1 className="title">⚡ Webpack React Boilerplate ⚡</h1>
+    </Fragment>
 );
 
 export default (): void => {

@@ -1,21 +1,25 @@
-.logo {
-    width: 300px;
-    height: 300px;
-    margin: 0 auto;
-    transform: scale(1);
-    animation: pulse 2s infinite;
+* {
+    margin: 0;
+    padding: 0;
 }
 
-@keyframes pulse {
-    0% {
-        transform: scale(0.95);
-    }
+body {
+    background-color: #333;
+}
 
-    70% {
-        transform: scale(1);
-    }
+.title {
+    background: linear-gradient(330deg, #e05252 0%, #99e052 25%, #52e0e0 50%, #9952e0 75%, #e05252 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    font-size: 3rem;
+    animation: shine 1s linear infinite;
 
-    100% {
-        transform: scale(0.95);
+    @keyframes shine {
+        to {
+            background-position: 200% center;
+        }
     }
 }
