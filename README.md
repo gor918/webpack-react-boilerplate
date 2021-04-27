@@ -23,6 +23,7 @@ npm i
 🚀️ For better Prettier and ESLint experience please setup for your IDE the following settings
 
 #### Visual Studio Code
+
 ```json
 "[typescript]": {
   "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -47,6 +48,7 @@ npm i
 ```
 
 #### WebStorm
+
 Preferences/Settings | Languages & Frameworks | JavaScript | Prettier.
 
 ### Development server
@@ -73,17 +75,17 @@ npm run build
 
 ## Features
 
-- [Webpack (v.5)](https://webpack.js.org/)
-- [React (v.17)](https://reactjs.org/)
-- [TypeScript (v.4)](https://www.typescriptlang.org/)
-- [Babel (v.7)](https://babeljs.io/)
-- [Sass (v.5)](https://sass-lang.com/)
-- [PostCSS (v.8)](https://postcss.org/)
-- [Prettier (v.2)](https://prettier.io/)
+-   [Webpack (v.5)](https://webpack.js.org/)
+-   [React (v.17)](https://reactjs.org/)
+-   [TypeScript (v.4)](https://www.typescriptlang.org/)
+-   [ESBuild](https://esbuild.github.io/)
+-   [Sass (v.5)](https://sass-lang.com/)
+-   [PostCSS (v.8)](https://postcss.org/)
+-   [Prettier (v.2)](https://prettier.io/)
 
 ## Author
 
-- [gor918](https://github.com/gor918)
+-   [gor918](https://github.com/gor918)
 
 ## License
 
