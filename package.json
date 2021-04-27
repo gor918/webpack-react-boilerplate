@@ -3,6 +3,7 @@
     "version": "1.0.1",
     "description": "Webpack + React + TypeScript + ESLint + Prettier",
     "main": "index.js",
+    "type": "module",
     "scripts": {
         "start": "cross-env NODE_ENV=development webpack serve --env development --progress",
         "build": "cross-env NODE_ENV=production webpack --mode production --progress",
