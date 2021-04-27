@@ -11,7 +11,7 @@ const here = (dir) => (dir ? path.resolve(process.cwd(), dir) : process.cwd());
 
 const dirs = {
     src: './src',
-    dist: './dist/phoenix',
+    dist: './dist',
 };
 
 function getBuildTarget() {
