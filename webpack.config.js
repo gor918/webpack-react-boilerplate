@@ -1,16 +1,32 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const CopyPlugin = require('copy-webpack-plugin');
+import path from 'path';
 
-const here = (dir) => (dir ? path.resolve(__dirname, dir) : __dirname);
+import browserslist from 'browserslist';
+
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import { CleanWebpackPlugin } from 'clean-webpack-plugin';
+import { ESBuildMinifyPlugin } from 'esbuild-loader';
+import CopyPlugin from 'copy-webpack-plugin';
+
+const here = (dir) => (dir ? path.resolve(process.cwd(), dir) : process.cwd());
 
 const dirs = {
     src: './src',
-    dist: './dist',
+    dist: './dist/phoenix',
 };
 
-module.exports = (env, args = {}) => {
+function getBuildTarget() {
+    const SUPPORTED_BUILD_TARGETS = ['es', 'chrome', 'edge', 'firefox', 'ios', 'node', 'safari'];
+
+    const sep = ' ';
+    const supported = (b) =>
+        SUPPORTED_BUILD_TARGETS.some((t) => b.startsWith(t + sep)) ? b.replace(sep, '') : undefined;
+
+    return browserslist().map(supported).filter(Boolean);
+}
+
+const target = getBuildTarget();
+
+export default (env, args = {}) => {
     const { mode = 'development' } = args;
     const isProduction = mode === 'production';
 
@@ -20,6 +36,9 @@ module.exports = (env, args = {}) => {
         target: 'web',
         entry: {
             app: `${dirs.src}/index`,
+        },
+        experiments: {
+            asset: true,
         },
         output: {
             path: here(dirs.dist),
@@ -32,8 +51,7 @@ module.exports = (env, args = {}) => {
             extensions: ['.ts', '.tsx', '.js', '.jsx'],
             modules: [here('./node_modules'), here(dirs.src)],
         },
-        devtool: !isProduction && 'inline-cheap-module-source-map',
-        stats: 'errors-only',
+        devtool: isProduction ? 'source-map' : 'inline-cheap-module-source-map',
         module: {
             rules: [
                 {
@@ -41,24 +59,16 @@ module.exports = (env, args = {}) => {
                     use: ['style-loader', 'css-loader', 'sass-loader', 'postcss-loader'],
                 },
                 {
-                    test: /\.tsx?$/,
-                    loader: 'ts-loader',
-                    exclude: /node_modules/,
-                },
-                {
-                    test: /\.(ts)x?$/,
-                    exclude: /node_modules/,
-                    use: {
-                        loader: 'babel-loader',
-                        options: {
-                            babelrc: true,
-                            comments: true,
-                            cacheDirectory: here(`./node_modules/.cache/${mode}/js`),
-                        },
+                    test: /\.[tj]sx?$/,
+                    sideEffects: true,
+                    loader: 'esbuild-loader',
+                    options: {
+                        loader: 'tsx',
+                        target,
                     },
                 },
                 {
-                    test: /\.svg$/,
+                    test: /\.(svg|png)$/i,
                     type: 'asset/resource',
                 },
             ],
@@ -93,11 +103,20 @@ module.exports = (env, args = {}) => {
                 maxSize: 100000,
                 minSize: 20000,
             },
+            minimizer: [new ESBuildMinifyPlugin({ target })],
         },
         performance: {
             hints: isProduction && 'warning',
             maxEntrypointSize: Infinity,
-            maxAssetSize: 10 ** 6,
+            maxAssetSize: 0.25 * 10 ** 6,
+        },
+        stats: {
+            cachedAssets: false,
+            children: false,
+            modules: false,
+            entrypoints: false,
+            errorDetails: true,
+            excludeAssets: /\.(jpe?g|png|webp|gif|ogg|m4a|mp4|webm|svg|ico|cur|eot|ttf|woff|woff2|map|LICENSE)$/i,
         },
         devServer: {
             historyApiFallback: true,
