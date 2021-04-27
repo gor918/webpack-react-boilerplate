@@ -4,22 +4,19 @@
     "parserOptions": {
         "project": "./tsconfig.json"
     },
-    "plugins": [
-        "@typescript-eslint"
-    ],
+    "plugins": ["@typescript-eslint"],
     "extends": [
         "airbnb-typescript",
         "airbnb/hooks",
         "plugin:react/recommended",
         "plugin:import/typescript",
-        "prettier/@typescript-eslint",
-        "plugin:@typescript-eslint/recommended",
         "plugin:react-hooks/recommended",
-        "plugin:import/recommended",
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
         "prettier",
-        "prettier/react"
+        "plugin:import/recommended"
     ],
-    "ignorePatterns": ["webpack.config.js", "postcss.config.js", "prettier.config.js"],
+    "ignorePatterns": ["webpack.config.js", "server.js", "./scripts/prettier.js", "prettier.config.js"],
     "env": {
         "node": true,
         "browser": true,
@@ -27,6 +24,7 @@
         "es2020": false
     },
     "rules": {
+        "@typescript-eslint/no-explicit-any": "off",
         "react/display-name": "off",
         "no-underscore-dangle": "off",
         "@typescript-eslint/no-var-requires": 0,
@@ -74,11 +72,7 @@
         "react/jsx-filename-extension": [
             "error",
             {
-                "extensions": [
-                    ",.js",
-                    ",.jsx",
-                    ".tsx"
-                ]
+                "extensions": [",.js", ",.jsx", ".tsx"]
             }
         ],
         "import/prefer-default-export": "off",
@@ -86,23 +80,14 @@
         "no-console": [
             "warn",
             {
-                "allow": [
-                    "warn",
-                    "error",
-                    "log"
-                ]
+                "allow": ["warn", "error", "log"]
             }
         ],
         "no-param-reassign": [
             "error",
             {
                 "props": true,
-                "ignorePropertyModificationsFor": [
-                    "mutableTarget",
-                    "task",
-                    "assignableItem",
-                    "store"
-                ]
+                "ignorePropertyModificationsFor": ["mutableTarget", "task", "assignableItem", "store"]
             }
         ],
         "no-plusplus": "off",
@@ -114,8 +99,8 @@
             "node": {
                 "paths": ["./src"]
             },
-            "react":  {
-                "version":  "detect"  // Indicates eslint-plugin-react automatically detect the React version to use
+            "react": {
+                "version": "detect" // Indicates eslint-plugin-react automatically detect the React version to use
             }
         }
     }
