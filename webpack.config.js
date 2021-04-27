@@ -91,11 +91,7 @@ export default (env, args = {}) => {
                 chunksSortMode: 'none',
             }),
             new CopyPlugin({
-                patterns: [
-                    { from: 'src/static/_redirects' },
-                    { from: 'src/manifest.json', to: 'manifest.json' },
-                    { from: `${dirs.src}/assets` },
-                ],
+                patterns: [{ from: 'src/manifest.json', to: 'manifest.json' }, { from: `${dirs.src}/assets` }],
             }),
         ],
         optimization: {
