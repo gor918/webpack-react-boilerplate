@@ -1,12 +1,6 @@
 {
     "compilerOptions": {
-        "lib": [
-          "es6",
-          "dom",
-          "es2020",
-          "dom.iterable",
-        ],
-        "module": "esnext",
+        "lib": ["DOM", "DOM.Iterable", "ESNext"],
         "removeComments": true,
         "preserveConstEnums": true,
         "noImplicitThis": true,
@@ -24,14 +18,15 @@
         "incremental": true,
         "skipLibCheck": true,
         "strict": true,
-        "target": "es2020",
+        "target": "ESNext",
+        "module": "ESNext",
         "resolveJsonModule": true,
         "baseUrl": ".",
         "paths": {
-            "shared/*": ["src/shared/*"],
+            "shared/*": ["src/shared/*"]
         },
         "types": ["react", "node"]
     },
-    "exclude": ["dist", "node_modules"],
+    "exclude": ["dist", "node_modules", "public"],
     "include": ["src/"]
 }
