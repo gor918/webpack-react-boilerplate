@@ -60,6 +60,7 @@ export default (env, args = {}) => {
                 },
                 {
                     test: /\.[tj]sx?$/,
+                    exclude: here('node_modules'),
                     sideEffects: true,
                     loader: 'esbuild-loader',
                     options: {
