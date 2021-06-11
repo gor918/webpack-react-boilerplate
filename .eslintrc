@@ -16,14 +16,14 @@
         "prettier",
         "plugin:import/recommended"
     ],
-    "ignorePatterns": ["webpack.config.js", "server.js", "./scripts/prettier.js", "prettier.config.js"],
+    "ignorePatterns": ["webpack.config.js", "./scripts/prettier.js", "prettier.config.js"],
     "env": {
         "node": true,
         "browser": true,
-        "jest": true,
         "es2020": false
     },
     "rules": {
+        "import/no-unresolved": "error",
         "@typescript-eslint/no-explicit-any": "off",
         "react/display-name": "off",
         "no-underscore-dangle": "off",
@@ -87,7 +87,7 @@
             "error",
             {
                 "props": true,
-                "ignorePropertyModificationsFor": ["mutableTarget", "task", "assignableItem", "store"]
+                "ignorePropertyModificationsFor": ["mutableTarget", "task", "assignableItem", "store", "state"]
             }
         ],
         "no-plusplus": "off",
@@ -95,12 +95,23 @@
         "react/prop-types": "off"
     },
     "settings": {
+        "import/parsers": {
+            "@typescript-eslint/parser": [".ts", ".tsx"]
+        },
         "import/resolver": {
             "node": {
                 "paths": ["./src"]
             },
             "react": {
                 "version": "detect" // Indicates eslint-plugin-react automatically detect the React version to use
+            },
+            "typescript": {
+                "alwaysTryTypes": true, // always try to resolve types under `<root>@types` directory even it doesn't contain any source code, like `@types/unist`
+
+                // Choose from one of the "project" configs below or omit to use <root>/tsconfig.json by default
+
+                // use <root>/path/to/folder/tsconfig.json
+                "project": "./src/tsconfig.json"
             }
         }
     }
